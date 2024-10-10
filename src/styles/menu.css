@@ -1,0 +1,31 @@
+:root {
+    --red : #e51f1f ;
+    --red-hover: #9f0000;
+    --dark-gray: #0d3d56;
+    --darker-gray: #093145;
+}
+.main-menu {
+background-color: #EEE;
+height: fit-content;
+padding-top: 1rem;
+}
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: var(--red);
+    user-select: none;
+    margin-bottom: 2rem;
+}
+
+.main-menu .menu-grid  {
+    padding-bottom: 10rem;
+    width: 90%;
+    transform: translateX(-50%);
+    margin-left: 50%;
+    display: grid;
+    /* grid-template-columns: auto auto; */
+    grid-template-columns: 50% 50%;
+    gap: 2%;
+
+}

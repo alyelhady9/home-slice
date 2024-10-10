@@ -1,0 +1,58 @@
+:root {
+    --red : #e51f1f ;
+    --red-hover: #9f0000;
+    --dark-gray: #0d3d56;
+    --darker-gray: #093145;
+}
+.main-hero {
+    width: 100%;
+    display: flex;
+   justify-content: space-between;
+   user-select: none;
+   padding-bottom: 4rem;
+}
+
+.main-hero .hero-image {
+    width: 65%;
+    display: flex;
+    justify-content: end;
+}
+.main-hero .hero-image img {
+    width: 100%;
+    user-select: none;
+}
+
+.main-hero .title {
+    width: 35%;
+    padding-left: 5%;
+    margin-top: 4rem;
+}
+
+.main-hero .title .hero-paragraph {
+    color: var(--red);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.main-hero .title .hero-description {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+   color: var(--dark-gray);
+}
+
+.main-hero .title button {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 8px;
+}
+.main-hero .title button:hover {
+    background-color: white;
+    color: var(--red);
+    outline: 0.16rem solid var(--red);
+    transition: 0.3s;
+}

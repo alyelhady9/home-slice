@@ -1,0 +1,26 @@
+:root {
+    --red : #e51f1f ;
+    --red-hover: #9f0000;
+}
+.links {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.links .phone {
+    display: flex;
+    margin-left: 2%;
+}
+.links .facebook-icon,.x-icon,.phone-icon{
+    font-size: 1.3rem;
+}
+.links .facebook-icon {
+    color: blue;
+}
+.links .phone-icon {
+    color: var(--red);
+    margin-right: 1rem;
+}
+.links .phone p {
+    user-select: text;
+}
