@@ -18,10 +18,10 @@ const confirm = () => {
       props.setOpened(false)
     
 }
-const increment = (quan) => {
-    props.totalPrice * quan
-}
-
+// const increment = (quan) => {
+//     props.totalPrice * quan
+// }
+const time = Math.floor( Math.random() * (50 - 20 + 1)) + 20;
 return (
     <div className= {`cart ${props.opened}`}>
         
@@ -34,7 +34,7 @@ return (
                     
                     {
                         props.cartItems.length === 0? (
-                            <div className='empty-cart'>Your Cart Is Empthy!</div>
+                            <div className='empty-cart'>Your Cart Is Empty!</div>
                         ) : (
 
                         
@@ -51,10 +51,11 @@ return (
                                             <div className="item-data">
                                                 <div className="item-name">{item.name}</div>
                                                 <div className="item-price">${item.price}.00</div>
-                                                <Quantity removeItemFromCart= {props.removeItemFromCart} item={item.id} itemPrice={item.price}  quantity = {props.quantity}
+                                                <Quantity removeItemFromCart= {props.removeItemFromCart} item={item} itemPrice={item.price}  quantity = {props.quantity}
                                                        increment={props.increment}
                                                        decrement={props.decrement}
                                                        totalPrice={props.totalPrice}
+                                                       updateQuantity={props.updateQuantity}
 
                                                 />
                                         </div>
@@ -67,23 +68,25 @@ return (
                             
                         )}
                         </div>
-                        {/* <div className="total-price">
+                        <div className="total-price">
                             
                             <p>Total Price:</p>
                             {
                                 `$${props.totalPrice}.00`
                             }
-                        </div> */}
+                        </div>
                             <div className="confirm-btn" onClick={onPaid}>Check Out!</div>
                         </>
                     )}
                 </div>
                 {
+                
                     paid && 
                     <div className='confirmation'>
                         <p className='p1'>Payment Successful!</p>
                         <div className="img"><img src={delivery} alt="dilvering pizza"  /></div>
-                        <p className='p2'>your order will be delivered to your address within 50 minutes.</p>
+                        
+                        <p className='p2'>{`your order will be delivered to your address within ${time} minutes.`}</p>
                         <div className="confirm-btn" onClick={confirm}>Confirm</div>
                     </div>
                 }

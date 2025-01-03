@@ -6,15 +6,19 @@
     --green: #44ce1b;
 }
 header {
-    width: 90%;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
     margin-left: 50%;
     transform: translateX(-50%);
-    padding: 16px 0px;
+    padding: 16px 15%;
     display: flex;
     color: var(--dark-gray);
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    z-index: 9;
 }
 
 header .nav-bar {
@@ -95,4 +99,7 @@ header ul li:hover {
 .nav-btn:hover {
     outline: 2px solid var(--red);
   
+}
+.x-icon {
+color: var(--darker-gray);
 }

@@ -67,26 +67,70 @@ function App() {
 
 const [cartItems, setCartItems] = useState([])
 
+
+////////////
 const addItemToCart = (item) => {
-  if (
-    !cartItems.includes(item)
-  ){
+  setCartItems(prevItems => {
+    const existingItem = prevItems.find(cartItem => cartItem.id === item.id)
     
-    setCartItems([...cartItems,item])
-  }
-  
+    if (existingItem) {
+      return prevItems.map(cartItem =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      )
+    }
+    return [...prevItems, { ...item, quantity: 1 }]
+  })
 }
 
-const totalPrice = cartItems.reduce((acc, item) => acc + item.price , 0)
-console.log(totalPrice)
-// item.price * quan
+const removeItemFromCart = (productId) => {
+  setCartItems(prevItems => prevItems.filter(item => item.id !== productId))
+}
 
-
-
-
-  const removeItemFromCart = (productId) => {
-    setCartItems(cartItems.filter(item => item.id !== productId))
+const updateQuantity = (productId, newQuantity) => {
+  if (newQuantity < 1) {
+    removeItemFromCart(productId)
+    return
   }
+  setCartItems(prevItems =>
+    prevItems.map(item =>
+      item.id === productId
+        ? { ...item, quantity: newQuantity }
+        : item
+    )
+  )
+}
+const totalPrice = cartItems.reduce((acc, item) => 
+acc + (item.price * item.quantity), 0)
+
+////////////
+
+
+
+
+
+// const addItemToCart = (item) => {
+//   if (
+//     !cartItems.includes(item)
+//   ){
+    
+//     setCartItems([...cartItems,item])
+//   }
+  
+// }
+
+
+
+// const totalPrice = cartItems.reduce((acc, item) => 
+//   acc + (item.price * item.quantity), 0)
+
+
+
+// const removeItemFromCart = (productId) => {
+//   setCartItems(prevItems => prevItems.filter(item => item.id !== productId))
+// }
+
 
 //  #e51f1f red
 // #44ce1b green
@@ -110,14 +154,25 @@ console.log(totalPrice)
       />
 
 
-      <Cart opened= {opened} setOpened={setOpened} close={closeCart} cartItems={cartItems} setCartItems={setCartItems}
-        removeItemFromCart={removeItemFromCart}
-        totalPrice={totalPrice}
- 
+      <Cart 
+          opened={opened}
+          setOpened={setOpened}
+          close={closeCart}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          removeItemFromCart={removeItemFromCart}
+          updateQuantity={updateQuantity}
+          totalPrice={totalPrice}
         />
+      {/* <Cart opened= {opened} setOpened={setOpened} close={closeCart} cartItems={cartItems} setCartItems={setCartItems}
+        removeItemFromCart={removeItemFromCart}
+        // totalPrice={totalPrice}
+        updateQuantity={updateQuantity}
+
+ 
+        /> */}
 
 
-        <div className="main-page" >
           <Nav 
           cartItems={cartItems}
           toMenu={toMenu} 
@@ -126,6 +181,7 @@ console.log(totalPrice)
           toAbout = {toAbout}
           openSideNav ={openSideNav}
           />
+        <div className="main-page" >
 
 
           <Hero toMenu ={toMenu}
